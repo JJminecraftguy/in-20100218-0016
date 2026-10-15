@@ -49,8 +49,8 @@ jobs:
           zip -r dist/dist.zip client
           mkdir -p dist/rel
           cp dist/dist.zip dist/rel/dist_${{ steps.vars.outputs.hash }}.zip
-          cp target_teavm_javascript/javascript/Eaglercraft_indev-20100219_Offline_en_US.html dist/rel/Eaglercraft_Offline_JS.html
-          cp target_teavm_wasm_gc/javascript_dist/Eaglercraft_indev-20100219_WASM-GC.html dist/rel/Eaglercraft_Offline_WASM.html
+          cp target_teavm_javascript/javascript/Eaglercraft_indev-20100218-0016_Offline_en_US.html dist/rel/Eaglercraft_Offline_JS.html
+          cp target_teavm_wasm_gc/javascript_dist/Eaglercraft_indev-20100218-0016_WASM-GC.html dist/rel/Eaglercraft_Offline_WASM.html
           mkdir -p dist/web
           cp src/web/index.html dist/web/index.html
           cp target_teavm_javascript/javascript/classes.js dist/web/classes.js
