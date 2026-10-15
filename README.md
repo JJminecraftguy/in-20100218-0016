@@ -1,6 +1,6 @@
-# Eaglercraft Indev 20100219
+# Eaglercraft Indev 20100218-0016
 ### Credit to Colbster937 for porting Indev 20100223
-![preview](https://raw.githubusercontent.com/JJminecraftguy/in-20100219/refs/heads/main/img/mainmenu.png)
+![preview](https://raw.githubusercontent.com/JJminecraftguy/in-20100218-0016/refs/heads/main/img/mainmenu.png)
 :-:
 This is a fully functional web port of Minecraft Indev 20100219, playable in any modern web browser.
 
@@ -10,10 +10,10 @@ This is a fully functional web port of Minecraft Indev 20100219, playable in any
 ## Quick Start
 ### Play Now:
 
-**Client:** https://jjminecraftguy.github.io/in-20100219/
+**Client:** https://jjminecraftguy.github.io/in-20100218-0016/
 
 ### Offline Downloads:
-You can grab the latest build here from the [releases](https://github.com/JJminecraftguy/in-20100219/releases) or compile it yourself.
+You can grab the latest build here from the [releases](https://github.com/JJminecraftguy/in-20100218-0016/releases) or compile it yourself.
 
 ## Compiling
 Run the `CompileClient` script to build the JavaScript and WASM-GC clients. The results will be in the `client` folder.
