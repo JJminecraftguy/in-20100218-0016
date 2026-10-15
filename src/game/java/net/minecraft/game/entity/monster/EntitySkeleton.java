@@ -56,8 +56,4 @@ public class EntitySkeleton extends EntityMob {
 	protected final String getEntityString() {
 		return "Skeleton";
 	}
-
-	protected final int scoreValue() {
-		return Item.arrow.shiftedIndex;
-	}
 }

@@ -38,7 +38,6 @@ public final class World {
 	List worldAccesses = new ArrayList();
 	private List tickList = new LinkedList();
 	public Map map = new HashMap();
-	private List list = new ArrayList();
 	int[] heightMap;
 	public Random random = new Random();
 	private Random rand = new Random();
@@ -403,12 +402,6 @@ public final class World {
 
 	public final void updateEntities() {
 		this.entityMap.updateEntities();
-
-		for (int var1 = 0; var1 < this.list.size(); ++var1) {
-			TileEntity var2 = (TileEntity) this.list.get(var1);
-			var2.updateEntity();
-		}
-
 	}
 
 	public final void updateLighting() {
@@ -1571,16 +1564,11 @@ public final class World {
 	}
 
 	public final void setBlockTileEntity(int var1, int var2, int var3, TileEntity var4) {
-		var4.worldObj = this;
-		var4.xCoord = var1;
-		var4.yCoord = var2;
-		var4.zCoord = var3;
 		this.map.put(Integer.valueOf(var1 + (var2 << 10) + (var3 << 10 << 10)), var4);
-		this.list.add(var4);
 	}
 
 	public final void removeBlockTileEntity(int var1, int var2, int var3) {
-		this.list.remove(this.map.remove(Integer.valueOf(var1 + (var2 << 10) + (var3 << 10 << 10))));
+		this.map.remove(Integer.valueOf(var1 + (var2 << 10) + (var3 << 10 << 10)));
 	}
 
 	public final TileEntity getBlockTileEntity(int var1, int var2, int var3) {

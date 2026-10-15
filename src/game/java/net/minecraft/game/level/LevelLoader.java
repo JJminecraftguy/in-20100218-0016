@@ -23,7 +23,6 @@ import net.minecraft.game.entity.monster.EntityZombie;
 import net.minecraft.game.level.block.Block;
 import net.minecraft.game.level.block.tileentity.TileEntity;
 import net.minecraft.game.level.block.tileentity.TileEntityChest;
-import net.minecraft.game.level.block.tileentity.TileEntityFurnace;
 import util.IProgressUpdate;
 
 public abstract class LevelLoader {
@@ -109,7 +108,7 @@ public abstract class LevelLoader {
 				var4 = (NBTTagCompound)var17.tagAt(var18);
 				int var22 = var4.getInteger("Pos");
 				String var14 = var4.getString("id");
-				Object var20 = var14.equals("Chest") ? new TileEntityChest() : (var14.equals("Furnace") ? new TileEntityFurnace() : null);
+				Object var20 = var14.equals("Chest") ? new TileEntityChest() : null;
 				if(var20 != null) {
 					int var15 = var22 % 1024;
 					int var23 = (var22 >> 10) % 1024;

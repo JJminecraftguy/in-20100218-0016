@@ -34,8 +34,4 @@ public class EntityPig extends EntityAnimal {
 	protected final String getDeathSound() {
 		return "mob.pigdeath";
 	}
-
-	protected final int scoreValue() {
-		return Item.porkRaw.shiftedIndex;
-	}
 }

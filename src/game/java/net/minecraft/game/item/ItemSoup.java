@@ -10,6 +10,6 @@ public final class ItemSoup extends ItemFood {
 
 	public final ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3) {
 		super.onItemRightClick(var1, var2, var3);
-		return new ItemStack(Item.bowlEmpty);
+		return new ItemStack(Item.bowlSoup);
 	}
 }

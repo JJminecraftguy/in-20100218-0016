@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.game.level.World;
 import net.minecraft.game.level.block.Block;
 import net.minecraft.game.level.block.StepSound;
+import net.minecraft.game.item.Item;
 import util.MathHelper;
 
 public class EntityLiving extends Entity {
@@ -282,19 +283,29 @@ public class EntityLiving extends Entity {
 	}
 
 	public void onDeath(Entity var1) {
-		int var4 = this.scoreValue();
-		if(var4 > 0) {
-			int var2 = this.rand.nextInt(3);
-
-			for(int var3 = 0; var3 < var2; ++var3) {
-				this.dropItemWithOffset(var4, 1);
+		int var3 = this.rand.nextInt(4);
+		int var2 = this.rand.nextInt(3);
+		if(var3 == 0) {
+			for(var3 = 0; var3 < var2; ++var3) {
+				this.dropItemWithOffset(Item.feather.shiftedIndex, 1);
 			}
+
+		} else if(var3 == 1) {
+			for(var3 = 0; var3 < var2; ++var3) {
+				this.dropItemWithOffset(Item.hoeWood.shiftedIndex, 1);
+			}
+
+		} else if(var3 != 2) {
+			if(var3 == 3) {
+				this.dropItemWithOffset(Item.striker.shiftedIndex, 1);
+			}
+
+		} else {
+			for(var3 = 0; var3 < var2; ++var3) {
+				this.dropItemWithOffset(Item.gunpowder.shiftedIndex, 1);
+			}
+
 		}
-
-	}
-
-	protected int scoreValue() {
-		return 0;
 	}
 
 	protected final void fall(float var1) {

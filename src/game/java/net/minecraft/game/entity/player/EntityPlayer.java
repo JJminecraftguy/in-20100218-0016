@@ -13,7 +13,6 @@ import net.minecraft.game.item.ItemArmor;
 import net.minecraft.game.item.ItemStack;
 import net.minecraft.game.level.World;
 import net.minecraft.game.level.block.Block;
-import net.minecraft.game.level.block.tileentity.TileEntityFurnace;
 import net.minecraft.game.level.material.Material;
 import util.MathHelper;
 
@@ -132,17 +131,6 @@ public class EntityPlayer extends EntityLiving {
 		}
 	}
 
-	public final boolean canHarvestBlock(Block var1) {
-		Block var2 = var1;
-		InventoryPlayer var3 = this.inventory;
-		if(var2.material != Material.rock && var2.material != Material.iron) {
-			return true;
-		} else {
-			ItemStack var4 = var3.getStackInSlot(var3.currentItem);
-			return var4 != null ? Item.itemsList[var4.itemID].canHarvestBlock(var2) : false;
-		}
-	}
-
 	protected void readEntityFromNBT(NBTTagCompound var1) {
 		super.readEntityFromNBT(var1);
 	}
@@ -215,8 +203,5 @@ public class EntityPlayer extends EntityLiving {
 				}
 			}
 		}
-	}
-
-	public void displayGUIFurnace(TileEntityFurnace var1) {
 	}
 }

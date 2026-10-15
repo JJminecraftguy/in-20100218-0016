@@ -90,8 +90,6 @@ public class Block {
 	public static final Block workbench;
 	public static final Block crops;
 	public static final Block tilledField;
-	public static final Block stoneOvenIdle;
-	public static final Block stoneOvenActive;
 	public int blockIndexInTexture;
 	public final int blockID;
 	private float hardness;
@@ -243,28 +241,41 @@ public class Block {
 	}
 
 	public final float blockStrength(EntityPlayer var1) {
-		if (this.hardness < 0.0F) {
+		if(this.hardness < 0.0F) {
 			return 0.0F;
-		} else if (!var1.canHarvestBlock(this)) {
-			return 1.0F / this.hardness / 100.0F;
 		} else {
-			InventoryPlayer var2 = var1.inventory;
-			float var4 = 1.0F;
-			if (var2.mainInventory[var2.currentItem] != null) {
-				ItemStack var5 = var2.mainInventory[var2.currentItem];
-				var4 = 1.0F * var5.getItem().getStrVsBlock(this);
+			InventoryPlayer var3 = ((EntityPlayer)var1).inventory;
+			boolean var10000;
+			ItemStack var6;
+			if(this.material != Material.rock && this.material != Material.iron) {
+				var10000 = true;
+			} else {
+				var6 = var3.getStackInSlot(var3.currentItem);
+				var10000 = var6 != null ? Item.itemsList[var6.itemID].canHarvestBlock(this) : false;
 			}
 
-			float var6 = var4;
-			if (var1.isInsideOfWater()) {
-				var6 = var4 / 5.0F;
-			}
+			if(!var10000) {
+				return 1.0F / this.hardness / 100.0F;
+			} else {
+				InventoryPlayer var4 = ((EntityPlayer)var1).inventory;
+				float var5 = 1.0F;
+				if(var4.mainInventory[var4.currentItem] != null) {
+					ItemStack var10001 = var4.mainInventory[var4.currentItem];
+					var6 = var10001;
+					var5 = 1.0F * var6.getItem().getStrVsBlock(this);
+				}
 
-			if (!var1.onGround) {
-				var6 /= 5.0F;
-			}
+				float var7 = var5;
+				if(((EntityPlayer)var1).isInsideOfWater()) {
+					var7 = var5 / 5.0F;
+				}
 
-			return var6 / this.hardness / 30.0F;
+				if(!((EntityPlayer)var1).onGround) {
+					var7 /= 5.0F;
+				}
+
+				return var7 / this.hardness / 30.0F;
+			}
 		}
 	}
 
@@ -417,6 +428,10 @@ public class Block {
 		return false;
 	}
 
+	public boolean onBlockPlaced(World var1, float var2, float var3, float var4) {
+		return false;
+	}
+
 	public void onEntityWalking(World var1, int var2, int var3, int var4) {
 	}
 
@@ -444,7 +459,7 @@ public class Block {
 		var0 = var10000;
 		var0.stepSound = var1;
 		cobblestone = var0;
-		var10000 = (new Block(5, 4, Material.wood)).setHardness(2.0F).setResistance(5.0F);
+		var10000 = (new Block(5, 4, Material.wood)).setHardness(1.5F).setResistance(5.0F);
 		var1 = soundWoodFootstep;
 		var0 = var10000;
 		var0.stepSound = var1;
@@ -468,7 +483,7 @@ public class Block {
 		var0 = var10000;
 		var0.stepSound = var1;
 		sand = var0;
-		var10000 = (new BlockGravel(13, 19)).setHardness(0.6F);
+		var10000 = (new BlockSand(13, 19)).setHardness(0.6F);
 		var1 = soundGravelFootstep;
 		var0 = var10000;
 		var0.stepSound = var1;
@@ -488,7 +503,7 @@ public class Block {
 		var0 = var10000;
 		var0.stepSound = var1;
 		oreCoal = var0;
-		var10000 = (new BlockLog(17)).setHardness(2.0F);
+		var10000 = (new BlockLog(17)).setHardness(1.0F);
 		var1 = soundWoodFootstep;
 		var0 = var10000;
 		var0.stepSound = var1;
@@ -708,16 +723,6 @@ public class Block {
 		var0 = var10000;
 		var0.stepSound = var1;
 		tilledField = var0;
-		var10000 = (new BlockFurnace(61, false)).setHardness(3.5F);
-		var1 = soundStoneFootstep;
-		var0 = var10000;
-		var0.stepSound = var1;
-		stoneOvenIdle = var0;
-		var10000 = (new BlockFurnace(62, true)).setHardness(3.5F);
-		var1 = soundStoneFootstep;
-		var0 = var10000;
-		var0.stepSound = var1;
-		stoneOvenActive = var0.setLightValue(14.0F / 16.0F);
 
 		for (int var2 = 0; var2 < 256; ++var2) {
 			if (blocksList[var2] != null) {

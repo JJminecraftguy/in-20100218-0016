@@ -59,8 +59,4 @@ public class EntitySpider extends EntityMob {
 	protected final String getEntityString() {
 		return "Spider";
 	}
-
-	protected final int scoreValue() {
-		return Item.silk.shiftedIndex;
-	}
 }
